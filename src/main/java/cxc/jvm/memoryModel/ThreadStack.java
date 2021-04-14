@@ -1,7 +1,8 @@
 package cxc.jvm.memoryModel;
 
 /**
- * 线程栈的演示（栈）
+ * 线程栈的演示（栈）--javap -c（-v） 命令查看该类字节码
+ *
  * @ClassName:ThreadStack
  * @DESCRIPTION:
  * @author: cxc
@@ -18,11 +19,11 @@ public class ThreadStack {
         return c;
     }
 
-    public void print(){
+    public void print() {
         System.out.println("-----print-----");
     }
 
-    public void funOne(){
+    public void funOne() {
         int a = 1;
         int b = 5;
         int c = (a + b) * 10;

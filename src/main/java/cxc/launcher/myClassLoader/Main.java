@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 public class Main {
     public static void main(String[] args) throws Exception {
         MyClassLoader myClassLoader = new MyClassLoader("D:/A_CXC_workSpace/");
-        /*调用loadClass方法则会使用父类的loadClass方法，调用this.parent.loadClass(name, false)
+        /*调用loadClass方法则会调用父加载器的loadClass方法，调用this.parent.loadClass(name, false)
         * 来加载(构造方法会自动为parent属性赋值)，失败后依次向上进行调用。
         * 如果classpath下有所要加载的class文件则会使用AppClassLoader来加载。
         * classPath下没有的话最终会调用自己重写的findClass方法。
