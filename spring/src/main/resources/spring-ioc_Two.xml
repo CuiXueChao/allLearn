@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <!--正常的加载顺序为school要先于user，通过dependsOn属性设置依赖关系来修改加载顺序-->
+    <!--懒加载配置之后只有在使用到所配置的bean时，才会将bean注入到spring容器之中-->
+    <bean class="cxc.entity.SchoolTwo" id="schoolTwo" depends-on="userOne" lazy-init="true"/>
+    <bean class="cxc.entity.UserOne" id="userOne" scope="prototype"/>
+
+
+    <!--bean对象的实例化，默认会根据配置进行加载（无参、有参），无法进行干预
+    通过工厂模式可进行对象实例化的干预（多态场景）
+    静态工厂方法
+    抽象工厂
+    -->
+    <!--通过factory-method方法来指定一个静态的方法来对对象进行实例化-->
+    <bean class="cxc.entity.SchoolTwo" id="schoolTwo2" factory-method="staticFactory"/>
+
+    <!--实例工厂来对对象进行实例化，需单独创建一个工厂对象，并将其注入到spring中-->
+    <bean class="cxc.entity.SchoolFactoryTwo" name="schoolFactoryTwo"/>
+    <!--工厂方法不需要声明为静态-->
+    <bean class="cxc.entity.SchoolTwo" id="schoolTwo3" factory-bean="schoolFactoryTwo" factory-method="getSchool"/>
+
+
+    <!--自动注入 - 针对对象重还有其他引用类型时，省去手动的注入-->
+    <!--byName 根据set方法的名称进行注入
+    byType 根据所引用的类型进行注入
+    constructor 根据构造函数进行注入
+    -》优先根据参数的名字（参数的名字！！不是类型）匹配，没有匹配到通过类型匹配
+    如果构造函数的某个参数不在ioc容器中，则无法完成注入
+    -->
+    <bean class="cxc.entity.UserOne" name="one" autowire="byName"/>
+
+    <!--生命周期回调函数所创建的实例-可通过实现接口和配置属性完成
+     实现两个接口可分别实现初始化和销毁函数<br/>
+     InitializingBean - DisposableBean <br/>
+     在类中定义方法通过配置文件中的两个属性进行指定同样也可实现<br/>
+     init-method - destroy-method-->
+    <bean class="cxc.entity.SchoolFactoryTwo" id="schoolFactoryTwo2"/>
+
+    <!--配置第三方bean-->
+    <!--通过加载配置文件进行配置-->
+    <context:property-placeholder location="db.properties"/>
+    <bean class="com.alibaba.druid.pool.DruidDataSource" id="dataSource">
+        <property name="name" value="${mysql.name}"/>
+        <property name="password" value="${mysql.password}"/>
+        <property name="url" value="${mysql.url}"/>
+        <property name="driverClassName" value="${mysql.driverClassName}"/>
+    </bean>
+
+</beans>
