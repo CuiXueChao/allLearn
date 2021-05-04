@@ -14,7 +14,7 @@
     其实也没必要完全按照这个方式来，都可以实现在容器中注册Bean的功能
     可读性更强，更利于spring的管理（方便排除，和选择，aop配置同样也更加灵活）
     -->
-    <context:component-scan base-package="cxc">
+    <context:component-scan base-package="cxc.second">
         <!--type的种类
         1.annotation - 根据注解的全限定名来进行过滤（包含）
         2.assignable - 根据类的全限定名来进行过滤（包含）
