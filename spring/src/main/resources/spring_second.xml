@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--<bean class="cxc.second.entity.User" id="user"/>-->
+    <!--声明扫描包，告诉spring已经配置了注解，让他去扫描-->
+    <!--
+    @component - 用来标记非其余三层业务的Bean
+    @Repository - 用来标记持久层的Bean
+    @Service - 用来标记service层的Bean
+    @Controller - 用来标记控制层的Bean
+    其实也没必要完全按照这个方式来，都可以实现在容器中注册Bean的功能
+    可读性更强，更利于spring的管理（方便排除，和选择，aop配置同样也更加灵活）
+    -->
+    <context:component-scan base-package="cxc">
+        <!--type的种类
+        1.annotation - 根据注解的全限定名来进行过滤（包含）
+        2.assignable - 根据类的全限定名来进行过滤（包含）
+        3.aspectj - 根据切面的表达式来进行过滤（包含）
+        4.regex - 通过正则表达式来进行过滤（包含）
+        5.custom - 通过实现接口来自定义哪些需要过滤（包含）
+        -->
+
+        <!--定义排除由@Service所标记的类不会被扫描-->
+
+        <!--<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>-->
+
+        <!--定义要扫描哪些注解标记的Bean
+        搭配use-default-filters="false"来使用，表示默认所有的注解标记的都不扫描，只扫描所定义要扫描的
+        -->
+
+        <!--<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>-->
+
+    </context:component-scan>
+
+</beans>

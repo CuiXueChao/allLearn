@@ -1,4 +1,4 @@
-package cxc.entity;
+package cxc.first;
 
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;

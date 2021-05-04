@@ -6,18 +6,21 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!-- 基于XML方式来配置ioc 通过set方法进行注入-->
     <!--name属性可设置多个别名-->
-    <bean class="cxc.entity.UserOne" id="user" name="user2 user3">
+    <bean class="cxc.first.UserOne" id="user" name="user2 user3">
         <description>定义一个Bean的描述</description>
         <!--该标签通过类属性的set方法进行值的设置，如未定义set方法将报错-->
         <property name="age" value="10"/>
         <!--name属性的值根据set方法来对应，去掉"set"后使用小驼峰来定义-->
         <property name="myName" value="cxc"/>
     </bean>
+
+
     <!--用来为bean定义别名等同于name属性-->
     <alias name="user" alias="anotherNameOfUserClass"/>
 
+
     <!--基于构造函数的注入 需根据所定义的构造函数将所有值全部注入，否则会报错 -->
-    <bean class="cxc.entity.UserOne" id="user4">
+    <bean class="cxc.first.UserOne" id="user4">
         <constructor-arg name="name">
             <!--定义值为null-->
             <null/>
@@ -31,10 +34,11 @@
         <constructor-arg name="age" value="1"/>
     </bean>
 
+
     <!--命名空间需要引入，详情看文件头部分（xmlns）不支持List、Map，需使用标签进行组合使用-->
     <!--通过p命名空间简化以Set方式来注入对象-->
-    <bean class="cxc.entity.UserOne" id="user5" p:age="18" p:myName="theP"/>
+    <bean class="cxc.first.UserOne" id="user5" p:age="18" p:myName="theP"/>
     <!--通过c命名空间简化以构造函数来注入对象-->
-    <bean class="cxc.entity.UserOne" id="user6" c:age="18" c:name="theC"/>
+    <bean class="cxc.first.UserOne" id="user6" c:age="18" c:name="theC"/>
 
 </beans>

@@ -1,9 +1,9 @@
 package cxc.tests;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import cxc.entity.SchoolFactoryTwo;
-import cxc.entity.SchoolTwo;
-import cxc.entity.UserOne;
+import cxc.first.SchoolFactoryTwo;
+import cxc.first.SchoolTwo;
+import cxc.first.UserOne;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,9 +14,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 class SchoolTwoTest {
     private ClassPathXmlApplicationContext ioc;
 
+
     @BeforeAll
     void beforeTest() {
-        ioc = new ClassPathXmlApplicationContext("spring-ioc_Two.xml");
+        ioc = new ClassPathXmlApplicationContext("spring-ioc_firstB.xml");
     }
 
     /**

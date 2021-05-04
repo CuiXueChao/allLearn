@@ -1,4 +1,4 @@
-package cxc.entity;
+package cxc.first;
 
 /**
  * @author cxc

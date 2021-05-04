@@ -1,4 +1,4 @@
-package cxc.entity;
+package cxc.first;
 
 /**
  * 实现一个简单的多态，来展示干预spring中Bean对象的实例化

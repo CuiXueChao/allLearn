@@ -1,6 +1,6 @@
 package cxc.tests;
 
-import cxc.entity.UserOne;
+import cxc.first.UserOne;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -12,7 +12,7 @@ class UserOneTest {
 
     @BeforeAll
     void Test() {
-        ioc = new ClassPathXmlApplicationContext("spring-ioc_One.xml");
+        ioc = new ClassPathXmlApplicationContext("spring-ioc_firstA.xml");
     }
 
     /**
@@ -24,7 +24,7 @@ class UserOneTest {
     @Test
     void firstIocTest() {
 
-        //ioc = new ClassPathXmlApplicationContext("spring-ioc_One.xml");
+        //ioc = new ClassPathXmlApplicationContext("spring-ioc_firstA.xml");
         //可得到结论--配置文件加载完成之后所有的bean就已经被注册到了ioc容器之中
         System.out.println("spring-容器已经被加载");
 
