@@ -25,13 +25,13 @@ public class IocJavaConfig {
      * @Bean - 方法级别的注解 - 可定义第三方的Bean对象
      * */
 
-    @Value("%{mysql.name}")
+    @Value("${mysql.name}")
     private String name;
-    @Value("%{mysql.passWord}")
+    @Value("${mysql.password}")
     private String passWord;
-    @Value("%{mysql.url}")
+    @Value("${mysql.url}")
     private String url;
-    @Value("%{mysql.driverClassName}")
+    @Value("${mysql.driverClassName}")
     private String driveClassName;
 
 
