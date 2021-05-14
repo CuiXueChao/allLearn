@@ -39,4 +39,14 @@
         <filter-name>CharacterEncodingFilter</filter-name>
         <servlet-name>springmvc</servlet-name>
     </filter-mapping>
+
+    <!--HTML不支持Put和Delete方式的请求，通过mvc所提供的过滤器将post请求进行转换（须在请求中添加隐藏域）-->
+    <filter>
+        <filter-name>HttpFilter</filter-name>
+        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>HttpFilter</filter-name>
+        <servlet-name>springmvc</servlet-name>
+    </filter-mapping>
 </web-app>
