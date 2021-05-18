@@ -1,8 +1,10 @@
 package cxc.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +22,8 @@ public class User {
     private Map<String, String> parents;
     private String[] nickname;
     private User user;
+    @DateTimeFormat(pattern = "YYYY-MM-dd")
+    private Date birthday;
 
     @Override
     public String toString() {
@@ -30,21 +34,32 @@ public class User {
                 ", parents=" + parents +
                 ", nickname=" + Arrays.toString(nickname) +
                 ", user=" + user +
+                ", birthday=" + birthday +
                 '}';
     }
 
-    public User() {
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
     public User(String name, Integer age, List<String> hobby, Map<String, String> parents, String[] nickname,
-                User user) {
+                User user, Date birthday) {
         this.name = name;
         this.age = age;
         this.hobby = hobby;
         this.parents = parents;
         this.nickname = nickname;
         this.user = user;
+        this.birthday = birthday;
     }
+
+    public User() {
+    }
+
 
     public String getName() {
         return name;

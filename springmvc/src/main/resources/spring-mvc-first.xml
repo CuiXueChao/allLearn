@@ -24,4 +24,15 @@
     </bean>
     <!--path为需要映射的路径，view-name为要映射的jsp-->
     <mvc:view-controller path="/viewController" view-name="viewController"/>
+    <mvc:view-controller path="/six" view-name="six"/>
+
+    <!--将自定义的类型转换器装入类型转换器工厂,仍需修改以下内容指定conversion-service
+    <mvc:annotation-driven conversion-service="conversionService"/>-->
+    <bean class="org.springframework.context.support.ConversionServiceFactoryBean" id="conversionService">
+        <property name="converters">
+            <set>
+                <ref bean="myFormat"/>
+            </set>
+        </property>
+    </bean>
 </beans>
