@@ -15,7 +15,7 @@ import java.util.Map;
  * @date 2021/5/17
  */
 @Controller
-public class Sixth {
+public class SixthMvc {
 
     /*
      * json的响应及请求
@@ -23,6 +23,18 @@ public class Sixth {
      * @RequestBody 设置请求参数为Json
      * @JsonIgnore 设置返回时忽略所注解的属性（不将隐私信息暴露到前端）
      *
+     * */
+
+
+    /*
+     * json数据格式描述
+     * 集合 - 使用中括号描述 —— []
+     * 对象 - 使用大括号描述,属性用双引号包裹，和值使用冒号分开 —— {"xxx":...}
+     * map - 同对象 —— {}
+     * 字符串 - 使用双引号描述 —— ""
+     * 数字 - 直接书写即可 —— 1
+     * 对象中含其他对象 - 大括号+(声明属性)大括号 —— {"xxx":{...}}
+     * 集合中包含多个对象 - 中括号+大括号 —— [{"xxx":...},{"xxx":...}]
      * */
 
     /**
