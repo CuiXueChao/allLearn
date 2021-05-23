@@ -14,5 +14,8 @@
 <body>
 viewController.jsp
 <%--<spring:eval expression="verifyUser.birthday"/>--%>
+<%--虚拟目录映射--%>
+<img src="${pageContext.request.contextPath}/web/resource/img/${file}">
+
 </body>
 </html>

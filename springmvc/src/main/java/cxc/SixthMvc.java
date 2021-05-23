@@ -18,7 +18,7 @@ import java.util.Map;
 public class SixthMvc {
 
     /*
-     * json的响应及请求
+     * json的响应及请求  -- <mvc:annotation-driven/>
      * @ResponseBody 设置响应格式为Json
      * @RequestBody 设置请求参数为Json
      * @JsonIgnore 设置返回时忽略所注解的属性（不将隐私信息暴露到前端）

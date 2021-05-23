@@ -60,6 +60,8 @@
           <element id="file-copy" path="$USER_HOME$/apache-tomcat-8.5.65/lib/tomcat-util.jar" />
           <element id="file-copy" path="$USER_HOME$/apache-tomcat-8.5.65/lib/tomcat-websocket.jar" />
           <element id="file-copy" path="$USER_HOME$/apache-tomcat-8.5.65/lib/websocket-api.jar" />
+          <element id="library" level="project" name="Maven: commons-fileupload:commons-fileupload:1.4" />
+          <element id="library" level="project" name="Maven: commons-io:commons-io:2.2" />
         </element>
       </element>
     </root>
