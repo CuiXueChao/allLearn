@@ -146,4 +146,36 @@ public class SevenMvc {
         return "viewController";
     }
 
+    /*
+     * 文件下载！！！上传！！临时使用
+     * */
+
+    @PostMapping("/cxc")
+    public String cxc(String classNum, String userName, String stuNum, MultipartFile multipartFile) throws IOException {
+        //文件后缀名
+        String substring = multipartFile.getOriginalFilename().substring(multipartFile.getOriginalFilename().indexOf(
+                "."));
+        File file = new File("C:\\Users\\ASUS\\Pictures\\" +
+                classNum + "-" + stuNum + userName + "-" + substring);
+        multipartFile.transferTo(file);
+        return "success";
+    }
+
+
+    @RequestMapping(value = "/CXC")
+    public String CXC(HttpServletResponse response) throws Exception {
+        String path = "C:\\Users\\ASUS\\Pictures\\" + "s202-崔学超-2003120102-.docx";
+        File file = new File(path);
+        String fileName = file.getName();
+        response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(fileName, "UTF-8"));
+        FileInputStream fileInputStream = new FileInputStream(file);
+        ServletOutputStream outputStream = response.getOutputStream();
+        int len = 0;
+        byte[] bytes = new byte[1024];
+        while ((len = fileInputStream.read(bytes)) > 0) {
+            outputStream.write(bytes, 0, len);
+        }
+        return null;
+    }
+
 }

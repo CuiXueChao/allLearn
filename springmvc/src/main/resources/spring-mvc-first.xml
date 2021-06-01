@@ -44,4 +44,10 @@
         <!--最大允许20M的上传-->
         <property name="maxUploadSize" value="#{1024*1024*20}"/>
     </bean>
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/eighthOne"/>
+            <bean class="cxc.MyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>
