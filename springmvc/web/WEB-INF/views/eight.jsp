@@ -12,5 +12,6 @@
 </head>
 <body>
 拦截器
+欢迎：${sessionScope.userName}
 </body>
 </html>

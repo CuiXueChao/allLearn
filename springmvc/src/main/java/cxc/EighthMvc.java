@@ -3,6 +3,8 @@ package cxc;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * 拦截器学习（记录日志，权限管理，记录方法的调用时间）
  *
@@ -24,6 +26,14 @@ public class EighthMvc {
     @RequestMapping("/eighthOne")
     public String eighthOne() {
         System.out.println("eighthOne");
+        return "eight";
+    }
+
+
+    @RequestMapping("/eighthTwo")
+    public String eighthTwo(HttpSession session) {
+        System.out.println("eighthTwo");
+        session.setAttribute("userName", "cxc");
         return "eight";
     }
 }

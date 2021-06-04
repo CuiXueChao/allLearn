@@ -1,11 +1,13 @@
 package cxc;
 
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 
 /**
@@ -32,12 +34,22 @@ public class MyInterceptor implements HandlerInterceptor {
             HandlerMethod hm = (HandlerMethod) handler;
 
             System.out.println("preHandle - 方法执行之前执行");
-            System.out.println("类名 - " + hm.getMethod().getClass().getName());
+            System.out.println("类名 - " + hm.getBean().getClass().getName());
             System.out.println("方法名 - " + hm.getMethod().getName());
             System.out.println("参数列表获取" + Arrays.toString(hm.getMethod().getParameters()));
         }
-        //return false 将不会执行拦截器之后所处理的方法 - 即调用链中断
-        return true;
+
+        //新增登录验证
+        HttpSession session = request.getSession();
+        if (!ObjectUtils.isEmpty(session.getAttribute("userName"))) {
+            //return false 将不会执行拦截器之后所处理的方法 - 即调用链中断
+            return true;
+        } else {
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
+            return false;
+        }
+
+
     }
 
 
